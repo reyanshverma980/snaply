@@ -1,8 +1,9 @@
 <div align="center">
   <br />
-    <!-- <a href="#" target="_blank"> -->
-      <img src="https://github.com/adrianhajdin/social_media_app/assets/151519281/be514a19-3cbb-48b7-9acd-2cf4d2e319c4" alt="Project Banner">
-    <!-- </a> -->
+    <a href="https://snaply-amber.vercel.app" target="_blank">
+      <img src="https://github.com/user-attachments/assets/35fa74bd-2593-4c03-88ee-b8c796a36bb4" alt="Home feed">
+      <img src="https://github.com/user-attachments/assets/6dabda52-3be3-4927-bc1d-f9d0d3ecba72" alt="Profile page">
+    </a>
   <br />
 
   <div>
