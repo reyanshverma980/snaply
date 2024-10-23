@@ -111,14 +111,30 @@ export const useGetPostById = (id: string) => {
 	});
 };
 
+// queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
+// 		queryFn: getInfinitePosts,
+// 		getNextPageParam: (lastPage: DocumentList<Document> | undefined) => {
+// 			if (lastPage && lastPage.documents.length === 0) return null;
+// 			const lastId = lastPage!.documents[lastPage!.documents.length - 1].$id;
+// 			return lastId;
+// 		},
+
 export const useGetInfinitePosts = () => {
 	return useInfiniteQuery({
 		queryKey: [QUERY_KEYS.GET_INFINITE_POSTS],
 		queryFn: getInfinitePosts,
+		initialPageParam: 0,
 		getNextPageParam: (lastPage) => {
-			if (lastPage && lastPage.documents.length === 0) return null;
-			const lastId = lastPage!.documents[lastPage!.documents.length - 1].$id;
-			return lastId;
+			// If there's no data, there are no more pages.
+			if (!lastPage || lastPage.documents.length === 0) return null;
+
+			// Use the $id of the last document as the cursor.
+			const lastId = lastPage.documents[lastPage.documents.length - 1].$id;
+
+			const numericLastId = parseInt(lastId, 10);
+			if (isNaN(numericLastId)) return null;
+
+			return numericLastId;
 		},
 	});
 };
